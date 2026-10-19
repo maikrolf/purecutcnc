@@ -1,0 +1,490 @@
+{
+  "schemaVersion": 1,
+  "catalogHash": "sha256:04a87d22bffc4b21ebd24fd0af14346e8c291f289d7c84899816501126b8ae77",
+  "commands": [
+    {
+      "id": "file.newProject",
+      "labelKey": "file.newProject",
+      "label": "New project",
+      "group": "file",
+      "keywords": [
+        "newProject",
+        "new"
+      ],
+      "effect": "destructive"
+    },
+    {
+      "id": "file.openProject",
+      "labelKey": "file.openProject",
+      "label": "Open project",
+      "group": "file",
+      "keywords": [
+        "openProject",
+        "open"
+      ],
+      "effect": "destructive"
+    },
+    {
+      "id": "file.importGeometry",
+      "labelKey": "file.importGeometry",
+      "label": "Import geometry",
+      "group": "file",
+      "keywords": [
+        "importGeometry",
+        "import"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "file.exportModel",
+      "labelKey": "file.exportModel",
+      "label": "Export model",
+      "group": "file",
+      "keywords": [
+        "exportModel",
+        "export"
+      ],
+      "effect": "read"
+    },
+    {
+      "id": "file.printDesign",
+      "labelKey": "file.printDesign",
+      "label": "Print design",
+      "group": "file",
+      "keywords": [
+        "printDesign",
+        "print"
+      ],
+      "shortcut": "Ctrl/Cmd+P",
+      "effect": "read"
+    },
+    {
+      "id": "file.saveProject",
+      "labelKey": "file.saveProject",
+      "label": "Save project",
+      "group": "file",
+      "keywords": [
+        "saveProject",
+        "save"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "file.undo",
+      "labelKey": "file.undo",
+      "label": "Undo",
+      "group": "file",
+      "keywords": [
+        "undo",
+        "undo"
+      ],
+      "shortcut": "Ctrl/Cmd+Z",
+      "effect": "edit"
+    },
+    {
+      "id": "file.redo",
+      "labelKey": "file.redo",
+      "label": "Redo",
+      "group": "file",
+      "keywords": [
+        "redo",
+        "redo"
+      ],
+      "shortcut": "Ctrl/Cmd+Shift+Z",
+      "effect": "edit"
+    },
+    {
+      "id": "sketch.transform.copy",
+      "labelKey": "sketch.transform.copy",
+      "label": "Copy selected features",
+      "group": "sketch",
+      "keywords": [
+        "copy",
+        "copy"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "sketch.transform.move",
+      "labelKey": "sketch.transform.move",
+      "label": "Move selected features",
+      "group": "sketch",
+      "keywords": [
+        "move",
+        "move"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "sketch.transform.delete",
+      "labelKey": "sketch.transform.delete",
+      "label": "Delete selected features",
+      "group": "sketch",
+      "keywords": [
+        "delete",
+        "trash"
+      ],
+      "effect": "destructive"
+    },
+    {
+      "id": "sketch.transform.resize",
+      "labelKey": "sketch.transform.resize",
+      "label": "Resize selected features",
+      "group": "sketch",
+      "keywords": [
+        "resize",
+        "resize"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "sketch.transform.rotate",
+      "labelKey": "sketch.transform.rotate",
+      "label": "Rotate selected features",
+      "group": "sketch",
+      "keywords": [
+        "rotate",
+        "rotate"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "sketch.transform.mirror",
+      "labelKey": "sketch.transform.mirror",
+      "label": "Mirror selected features",
+      "group": "sketch",
+      "keywords": [
+        "mirror",
+        "mirror"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "sketch.boolean.join",
+      "labelKey": "sketch.boolean.join",
+      "label": "Join closed features",
+      "group": "sketch",
+      "keywords": [
+        "join",
+        "merge"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "sketch.boolean.cut",
+      "labelKey": "sketch.boolean.cut",
+      "label": "Cut features",
+      "group": "sketch",
+      "keywords": [
+        "cut",
+        "cut"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "sketch.boolean.offset",
+      "labelKey": "sketch.boolean.offset",
+      "label": "Create offset feature",
+      "group": "sketch",
+      "keywords": [
+        "offset",
+        "offset"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "sketch.edit.add_point",
+      "labelKey": "sketch.edit.addPoint",
+      "label": "Add point",
+      "group": "sketch",
+      "keywords": [
+        "add_point",
+        "point-add"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "sketch.edit.delete_point",
+      "labelKey": "sketch.edit.deletePoint",
+      "label": "Delete point",
+      "group": "sketch",
+      "keywords": [
+        "delete_point",
+        "point-delete"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "sketch.edit.delete_segment",
+      "labelKey": "sketch.edit.deleteSegment",
+      "label": "Delete segment",
+      "group": "sketch",
+      "keywords": [
+        "delete_segment",
+        "segment-delete"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "sketch.edit.disconnect",
+      "labelKey": "sketch.edit.disconnect",
+      "label": "Disconnect point",
+      "group": "sketch",
+      "keywords": [
+        "disconnect",
+        "disconnect"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "sketch.edit.fillet",
+      "labelKey": "sketch.edit.fillet",
+      "label": "Round corner / fillet",
+      "group": "sketch",
+      "keywords": [
+        "fillet",
+        "fillet"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "sketch.edit.chamfer",
+      "labelKey": "sketch.edit.chamfer",
+      "label": "Chamfer corner",
+      "group": "sketch",
+      "keywords": [
+        "chamfer",
+        "chamfer"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "sketch.edit.trim",
+      "labelKey": "sketch.edit.trim",
+      "label": "Trim to cutting edge",
+      "group": "sketch",
+      "keywords": [
+        "trim",
+        "trim"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "sketch.edit.extend",
+      "labelKey": "sketch.edit.extend",
+      "label": "Extend to target",
+      "group": "sketch",
+      "keywords": [
+        "extend",
+        "extend"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "sketch.constraint.add",
+      "labelKey": "sketch.constraint.add",
+      "label": "Add constraint",
+      "group": "sketch",
+      "keywords": [
+        "constraint",
+        "dimension",
+        "lock"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "sketch.dimension.tapeMeasure",
+      "labelKey": "shell.measure.tapeMeasure",
+      "label": "Tape measure",
+      "group": "sketch",
+      "keywords": [
+        "measure",
+        "distance",
+        "tape"
+      ],
+      "effect": "read"
+    },
+    {
+      "id": "sketch.dimension.delete",
+      "labelKey": "shell.measure.deleteDimension",
+      "label": "Delete dimension",
+      "group": "sketch",
+      "keywords": [
+        "measure",
+        "remove",
+        "annotation"
+      ],
+      "effect": "destructive"
+    },
+    {
+      "id": "sketch.dimension.toggle",
+      "labelKey": "shell.measure.showHideDimensions",
+      "label": "Show/hide dimensions",
+      "group": "sketch",
+      "keywords": [
+        "measure",
+        "show",
+        "hide",
+        "annotations"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "create.rect",
+      "labelKey": "sketch.creation.addShape",
+      "label": "Add rectangle",
+      "group": "create",
+      "keywords": [
+        "rect",
+        "rect",
+        "rectangle"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "create.circle",
+      "labelKey": "sketch.creation.addShape",
+      "label": "Add circle",
+      "group": "create",
+      "keywords": [
+        "circle",
+        "circle",
+        "circle"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "create.ellipse",
+      "labelKey": "sketch.creation.addShape",
+      "label": "Add ellipse",
+      "group": "create",
+      "keywords": [
+        "ellipse",
+        "ellipse",
+        "ellipse"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "create.polygon",
+      "labelKey": "sketch.creation.addShape",
+      "label": "Add polygon",
+      "group": "create",
+      "keywords": [
+        "polygon",
+        "polygon",
+        "polygon"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "create.spline",
+      "labelKey": "sketch.creation.addShape",
+      "label": "Add spline",
+      "group": "create",
+      "keywords": [
+        "spline",
+        "spline",
+        "spline"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "create.composite",
+      "labelKey": "sketch.creation.addShape",
+      "label": "Add composite shape",
+      "group": "create",
+      "keywords": [
+        "composite",
+        "composite",
+        "composite"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "create.text",
+      "labelKey": "sketch.creation.addShape",
+      "label": "Add text",
+      "group": "create",
+      "keywords": [
+        "text",
+        "text",
+        "text"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "create.slot",
+      "labelKey": "sketch.creation.addShape",
+      "label": "Add slot",
+      "group": "create",
+      "keywords": [
+        "slot",
+        "slot",
+        "slot"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "create.ngon",
+      "labelKey": "sketch.creation.addShape",
+      "label": "Add regular polygon",
+      "group": "create",
+      "keywords": [
+        "ngon",
+        "ngon",
+        "regular polygon"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "create.gear",
+      "labelKey": "sketch.creation.addShape",
+      "label": "Add gear",
+      "group": "create",
+      "keywords": [
+        "gear",
+        "gear",
+        "gear"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "create.roundrect",
+      "labelKey": "sketch.creation.addShape",
+      "label": "Add rounded rectangle",
+      "group": "create",
+      "keywords": [
+        "roundrect",
+        "roundrect",
+        "rounded rectangle"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "create.chamferrect",
+      "labelKey": "sketch.creation.addShape",
+      "label": "Add chamfered rectangle",
+      "group": "create",
+      "keywords": [
+        "chamferrect",
+        "chamferrect",
+        "chamfered rectangle"
+      ],
+      "effect": "edit"
+    },
+    {
+      "id": "view.zoomToModel",
+      "labelKey": "shell.topBar.zoomToModel",
+      "label": "Zoom to model",
+      "group": "view",
+      "keywords": [
+        "zoom",
+        "fit",
+        "frame",
+        "model"
+      ],
+      "effect": "read"
+    }
+  ]
+}

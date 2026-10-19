@@ -15,35 +15,18 @@
  */
 
 import { useI18n } from '../i18n/i18nContext'
+import { getCommandCatalogEntry } from './commandCatalog'
 import { useCreationShapeCommands } from './creationShapes'
-import { useFileCommands, type FileCommandId } from './fileCommands'
+import { useFileCommands } from './fileCommands'
 import { useSketchCommands } from './sketchCommands'
-import type { CommandEffect, CommandSpec } from './commandRegistry'
+import type { CommandSpec } from './commandRegistry'
 
 /**
  * Commands exposed outside the toolbar. The descriptors stay owned by the
- * existing hooks (file, sketch, creation); this adapter only gives them a
- * stable, namespaced identity and the metadata a palette or a bridge needs.
+ * existing hooks (file, sketch, creation); this adapter joins them with the
+ * shared catalog so the palette, the generated contract and the MCP package all
+ * read the same ids, groups, keywords, shortcuts and effects.
  */
-
-const FILE_EFFECTS: Record<FileCommandId, CommandEffect> = {
-  newProject: 'destructive',
-  openProject: 'destructive',
-  importGeometry: 'edit',
-  exportModel: 'read',
-  printDesign: 'read',
-  saveProject: 'edit',
-  undo: 'edit',
-  redo: 'edit',
-}
-
-// Only shortcuts this app actually handles belong here. Native desktop menu
-// accelerators are intentionally not guessed.
-const FILE_SHORTCUTS: Partial<Record<FileCommandId, string>> = {
-  undo: 'Ctrl/Cmd+Z',
-  redo: 'Ctrl/Cmd+Shift+Z',
-  printDesign: 'Ctrl/Cmd+P',
-}
 
 export interface UseAppCommandsArgs {
   onNewProject: () => void
@@ -80,13 +63,14 @@ export function useAppCommands({
   for (const descriptor of Object.values(file.commands)) {
     if (descriptor.id === 'importGeometry' && !onImportGeometry) continue
     if (descriptor.id === 'printDesign' && !onPrintDesign) continue
+    const entry = getCommandCatalogEntry(`file.${descriptor.id}`)
     commands.push({
-      id: `file.${descriptor.id}`,
+      id: entry.id,
       label: descriptor.label,
-      group: 'file',
-      keywords: [descriptor.id, descriptor.icon],
-      shortcut: FILE_SHORTCUTS[descriptor.id],
-      effect: FILE_EFFECTS[descriptor.id],
+      group: entry.group,
+      keywords: entry.keywords,
+      shortcut: entry.shortcut,
+      effect: entry.effect,
       enabled: descriptor.enabled,
       active: descriptor.active,
       run: descriptor.onActivate,
@@ -94,12 +78,14 @@ export function useAppCommands({
   }
 
   for (const descriptor of Object.values(sketch.transform)) {
+    const entry = getCommandCatalogEntry(`sketch.transform.${descriptor.id}`)
     commands.push({
-      id: `sketch.transform.${descriptor.id}`,
+      id: entry.id,
       label: descriptor.label,
-      group: 'sketch',
-      keywords: [descriptor.id, descriptor.icon],
-      effect: descriptor.id === 'delete' ? 'destructive' : 'edit',
+      group: entry.group,
+      keywords: entry.keywords,
+      shortcut: entry.shortcut,
+      effect: entry.effect,
       enabled: descriptor.enabled,
       active: descriptor.active,
       run: descriptor.onActivate,
@@ -107,12 +93,14 @@ export function useAppCommands({
   }
 
   for (const descriptor of Object.values(sketch.boolean)) {
+    const entry = getCommandCatalogEntry(`sketch.boolean.${descriptor.id}`)
     commands.push({
-      id: `sketch.boolean.${descriptor.id}`,
+      id: entry.id,
       label: descriptor.label,
-      group: 'sketch',
-      keywords: [descriptor.id, descriptor.icon],
-      effect: 'edit',
+      group: entry.group,
+      keywords: entry.keywords,
+      shortcut: entry.shortcut,
+      effect: entry.effect,
       enabled: descriptor.enabled,
       active: descriptor.active,
       run: descriptor.onActivate,
@@ -120,57 +108,67 @@ export function useAppCommands({
   }
 
   for (const descriptor of Object.values(sketch.sketchEdit)) {
+    const entry = getCommandCatalogEntry(`sketch.edit.${descriptor.id}`)
     commands.push({
-      id: `sketch.edit.${descriptor.id}`,
+      id: entry.id,
       label: descriptor.label,
-      group: 'sketch',
-      keywords: [descriptor.id, descriptor.icon],
-      effect: 'edit',
+      group: entry.group,
+      keywords: entry.keywords,
+      shortcut: entry.shortcut,
+      effect: entry.effect,
       enabled: descriptor.enabled,
       active: descriptor.active,
       run: descriptor.onActivate,
     })
   }
 
+  const constraint = getCommandCatalogEntry('sketch.constraint.add')
   commands.push({
-    id: 'sketch.constraint.add',
+    id: constraint.id,
     label: sketch.constraint.label,
-    group: 'sketch',
-    keywords: ['constraint', 'dimension', 'lock'],
-    effect: 'edit',
+    group: constraint.group,
+    keywords: constraint.keywords,
+    shortcut: constraint.shortcut,
+    effect: constraint.effect,
     enabled: sketch.constraint.enabled,
     active: sketch.constraint.active,
     run: sketch.constraint.onActivate,
   })
 
+  const tapeMeasure = getCommandCatalogEntry('sketch.dimension.tapeMeasure')
   commands.push({
-    id: 'sketch.dimension.tapeMeasure',
+    id: tapeMeasure.id,
     label: sketch.dimension.tapeMeasure.label,
-    group: 'sketch',
-    keywords: ['measure', 'distance', 'tape'],
-    effect: 'read',
+    group: tapeMeasure.group,
+    keywords: tapeMeasure.keywords,
+    shortcut: tapeMeasure.shortcut,
+    effect: tapeMeasure.effect,
     enabled: sketch.dimension.tapeMeasure.enabled,
     active: sketch.dimension.tapeMeasure.active,
     run: sketch.dimension.tapeMeasure.onActivate,
   })
 
+  const deleteDimension = getCommandCatalogEntry('sketch.dimension.delete')
   commands.push({
-    id: 'sketch.dimension.delete',
+    id: deleteDimension.id,
     label: sketch.dimension.deleteDimension.label,
-    group: 'sketch',
-    keywords: ['measure', 'remove', 'annotation'],
-    effect: 'destructive',
+    group: deleteDimension.group,
+    keywords: deleteDimension.keywords,
+    shortcut: deleteDimension.shortcut,
+    effect: deleteDimension.effect,
     enabled: sketch.dimension.deleteDimension.enabled,
     active: sketch.dimension.deleteDimension.active,
     run: sketch.dimension.deleteDimension.onActivate,
   })
 
+  const showDimensions = getCommandCatalogEntry('sketch.dimension.toggle')
   commands.push({
-    id: 'sketch.dimension.toggle',
+    id: showDimensions.id,
     label: sketch.dimension.showDimensions.label,
-    group: 'sketch',
-    keywords: ['measure', 'show', 'hide', 'annotations'],
-    effect: 'edit',
+    group: showDimensions.group,
+    keywords: showDimensions.keywords,
+    shortcut: showDimensions.shortcut,
+    effect: showDimensions.effect,
     enabled: sketch.dimension.showDimensions.enabled,
     active: sketch.dimension.showDimensions.active,
     run: sketch.dimension.showDimensions.onActivate,
@@ -178,24 +176,28 @@ export function useAppCommands({
 
   for (const descriptor of creation.shapeCommands) {
     if (descriptor.id === 'text' && !onRequestText) continue
+    const entry = getCommandCatalogEntry(`create.${descriptor.id}`)
     commands.push({
-      id: `create.${descriptor.id}`,
+      id: entry.id,
       label: descriptor.label,
-      group: 'create',
-      keywords: [descriptor.id, descriptor.icon, descriptor.noun],
-      effect: 'edit',
+      group: entry.group,
+      keywords: entry.keywords,
+      shortcut: entry.shortcut,
+      effect: entry.effect,
       enabled: descriptor.enabled,
       active: descriptor.active,
       run: descriptor.onActivate,
     })
   }
 
+  const zoomToModel = getCommandCatalogEntry('view.zoomToModel')
   commands.push({
-    id: 'view.zoomToModel',
+    id: zoomToModel.id,
     label: t('shell.topBar.zoomToModel'),
-    group: 'view',
-    keywords: ['zoom', 'fit', 'frame', 'model'],
-    effect: 'read',
+    group: zoomToModel.group,
+    keywords: zoomToModel.keywords,
+    shortcut: zoomToModel.shortcut,
+    effect: zoomToModel.effect,
     enabled: true,
     run: onZoomToModel,
   })
