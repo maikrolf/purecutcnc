@@ -26,6 +26,8 @@ import type { CannedShapeParams } from '../../types/project'
 import type { CannedShapeEditorRequest } from './editorRequest'
 import { NAMETAG_CANNED_KIND, NAMETAG_EDITOR_REQUEST } from './nametag'
 import { ORNAMENT_CANNED_KIND, ORNAMENT_EDITOR_REQUEST } from './ornament'
+import { HEART_TAG_CANNED_KIND, HEART_TAG_EDITOR_REQUEST } from './heartTag'
+import { MONOGRAM_CANNED_KIND, MONOGRAM_EDITOR_REQUEST } from './monogram'
 
 export interface GeneratorCatalogEntry {
   kind: string
@@ -44,5 +46,15 @@ export const GENERATOR_CATALOG: readonly GeneratorCatalogEntry[] = [
     kind: ORNAMENT_CANNED_KIND,
     request: ORNAMENT_EDITOR_REQUEST,
     defaults: { text: 'NAME', size: 6, radius: 30 },
+  },
+  {
+    kind: HEART_TAG_CANNED_KIND,
+    request: HEART_TAG_EDITOR_REQUEST,
+    defaults: { text: 'NAME', size: 12, padding: 6, hole: 5 },
+  },
+  {
+    kind: MONOGRAM_CANNED_KIND,
+    request: MONOGRAM_EDITOR_REQUEST,
+    defaults: { text: 'Family', year: 2026, size: 10, padding: 8 },
   },
 ]

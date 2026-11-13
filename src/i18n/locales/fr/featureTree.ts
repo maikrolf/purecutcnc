@@ -430,4 +430,8 @@ export const featureTreeFr: Record<keyof typeof featureTreeEn, string> = {
   'canned.nametag.summary': 'Étiquette nominative · {text}',
   'canned.ornament.name': 'Ornement',
   'canned.ornament.summary': 'Ornement · {text}',
+  'canned.heart.name': 'Étiquette cœur',
+  'canned.heart.summary': 'Étiquette cœur · {text}',
+  'canned.monogram.name': 'Enseigne monogramme',
+  'canned.monogram.summary': 'Monogramme · {text}',
 }

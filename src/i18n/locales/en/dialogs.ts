@@ -670,4 +670,5 @@ export const dialogsEn = {
   'dialogs.generators.add': 'Add',
   'dialogs.generators.invalid': 'Fill in every field with a usable value.',
   'dialogs.generators.field.padding': 'Padding',
+  'dialogs.generators.field.year': 'Year',
 } as const satisfies Record<string, string>

@@ -672,4 +672,5 @@ export const dialogsZhCN: Record<keyof typeof dialogsEn, string> = {
   'dialogs.generators.add': '添加',
   'dialogs.generators.invalid': '请为每个字段填写有效值。',
   'dialogs.generators.field.padding': '边距',
+  'dialogs.generators.field.year': '年份',
 }

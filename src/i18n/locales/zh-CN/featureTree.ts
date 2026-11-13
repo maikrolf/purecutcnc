@@ -520,4 +520,8 @@ export const featureTreeZhCN: Record<keyof typeof featureTreeEn, string> = {
   'canned.nametag.summary': '姓名牌 · {text}',
   'canned.ornament.name': '装饰牌',
   'canned.ornament.summary': '装饰牌 · {text}',
+  'canned.heart.name': '心形姓名牌',
+  'canned.heart.summary': '心形姓名牌 · {text}',
+  'canned.monogram.name': '字母组合牌',
+  'canned.monogram.summary': '字母组合牌 · {text}',
 }

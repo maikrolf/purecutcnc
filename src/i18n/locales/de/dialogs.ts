@@ -666,4 +666,5 @@ export const dialogsDe: Record<keyof typeof dialogsEn, string> = {
   'dialogs.generators.add': 'Hinzufügen',
   'dialogs.generators.invalid': 'Füllen Sie jedes Feld mit einem gültigen Wert.',
   'dialogs.generators.field.padding': 'Randabstand',
+  'dialogs.generators.field.year': 'Jahr',
 }

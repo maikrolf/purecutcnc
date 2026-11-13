@@ -622,4 +622,5 @@ export const dialogsEs: Record<keyof typeof dialogsEn, string> = {
   'dialogs.generators.add': 'Añadir',
   'dialogs.generators.invalid': 'Rellena todos los campos con un valor válido.',
   'dialogs.generators.field.padding': 'Margen',
+  'dialogs.generators.field.year': 'Año',
 }

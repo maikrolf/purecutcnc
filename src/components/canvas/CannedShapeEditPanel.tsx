@@ -49,6 +49,8 @@ import { ROUND_RECT_EDITOR_REQUEST } from '../../cannedShapes/generators/roundRe
 import { CHAMFER_RECT_EDITOR_REQUEST } from '../../cannedShapes/generators/chamferRect'
 import { NAMETAG_EDITOR_REQUEST } from '../../cannedShapes/generators/nametag'
 import { ORNAMENT_EDITOR_REQUEST } from '../../cannedShapes/generators/ornament'
+import { HEART_TAG_EDITOR_REQUEST } from '../../cannedShapes/generators/heartTag'
+import { MONOGRAM_EDITOR_REQUEST } from '../../cannedShapes/generators/monogram'
 import {
   GEAR_CANNED_KIND,
   normalizeGearCannedParams,
@@ -127,6 +129,8 @@ const EDITOR_REQUESTS: Record<string, CannedShapeEditorRequest> = Object.fromEnt
     CHAMFER_RECT_EDITOR_REQUEST,
     NAMETAG_EDITOR_REQUEST,
     ORNAMENT_EDITOR_REQUEST,
+    HEART_TAG_EDITOR_REQUEST,
+    MONOGRAM_EDITOR_REQUEST,
   ].map((request) => [request.kind, request]),
 )
 

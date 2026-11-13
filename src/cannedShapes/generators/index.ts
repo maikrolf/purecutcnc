@@ -40,6 +40,8 @@ import { turnCannedShape } from './turn'
 import { polygonCannedShape } from './polygon'
 import { nametagCannedShape } from './nametag'
 import { ornamentCannedShape } from './ornament'
+import { heartTagCannedShape } from './heartTag'
+import { monogramCannedShape } from './monogram'
 
 export const BUILT_IN_CANNED_SHAPES: readonly RegisteredCannedShapeGenerator[] = [
   ellipseCannedShape,
@@ -54,4 +56,6 @@ export const BUILT_IN_CANNED_SHAPES: readonly RegisteredCannedShapeGenerator[] =
   polygonCannedShape,
   nametagCannedShape,
   ornamentCannedShape,
+  heartTagCannedShape,
+  monogramCannedShape,
 ]

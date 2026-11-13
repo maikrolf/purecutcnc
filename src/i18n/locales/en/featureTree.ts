@@ -531,4 +531,8 @@ export const featureTreeEn = {
   'canned.nametag.summary': 'Name tag · {text}',
   'canned.ornament.name': 'Ornament',
   'canned.ornament.summary': 'Ornament · {text}',
+  'canned.heart.name': 'Heart tag',
+  'canned.heart.summary': 'Heart tag · {text}',
+  'canned.monogram.name': 'Monogram sign',
+  'canned.monogram.summary': 'Monogram · {text}',
 } as const satisfies Record<string, string>

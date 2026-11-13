@@ -48,9 +48,14 @@ function openingValues(kind: string, units: 'mm' | 'inch'): Record<string, strin
   const entry = GENERATOR_CATALOG.find((candidate) => candidate.kind === kind)
   if (!entry) return {}
   const scale = units === 'inch' ? 1 / 25.4 : 1
+  // An integer field is a count or a year, never a length: converting it would
+  // turn 2026 into 80.
+  const wholeNumbers = new Set(entry.request.fields.filter((field) => field.integer).map((field) => field.key))
   const scaled: CannedShapeParams = {}
   for (const [key, value] of Object.entries(entry.defaults)) {
-    scaled[key] = typeof value === 'number' ? Math.round(value * scale * 1000) / 1000 : value
+    scaled[key] = typeof value === 'number' && !wholeNumbers.has(key)
+      ? Math.round(value * scale * 1000) / 1000
+      : value
   }
   return editorInitialValues(entry.request, scaled)
 }
