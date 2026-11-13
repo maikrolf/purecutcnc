@@ -19,7 +19,7 @@ import { DEFAULT_SETUP_ID } from '../types/project'
 import { BOTTOM_SETUP_ID, withBottomSetup, projectWithFeatures } from '../test/projectFixtures'
 import { normalizeProject } from './helpers/projectFormat'
 import { resolveFeatureInstance } from './helpers/resolveFeatures'
-import { getFeatureGeometryBounds } from '../text'
+import { getFeatureGeometryBounds } from '../text/featureShapes'
 import { useProjectStore } from './projectStore'
 
 function assert(condition: unknown, message: string): asserts condition {

@@ -28,13 +28,15 @@
 import type { CannedShapeParams } from '../../types/project'
 import type { MessageKey } from '../../i18n/locales/en'
 
-/** One numeric field in the edit panel. */
+/** One field in the edit panel: a number by default, or a free-text value. */
 export interface CannedShapeEditorField {
   /** Key in the parameter object. */
   key: string
   labelKey: MessageKey
   /** Round to an integer before validation (a side count). */
   integer?: boolean
+  /** `'text'` stores the string as typed; absent means a number. */
+  kind?: 'number' | 'text'
 }
 
 /**

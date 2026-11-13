@@ -19,7 +19,7 @@
 // the whole segment avoids crediting its deepest endpoint outside the target.
 import ClipperLib from 'clipper-lib'
 import type { Point, SketchFeature } from '../types/project'
-import { getFeatureGeometryProfiles } from '../text'
+import { getFeatureGeometryProfiles } from '../text/featureShapes'
 import { addOpenSubject, openPathsFromPolyTree } from './clipperOpenPaths'
 import { flattenProfileWithin } from './nesting/flatten'
 import { DEFAULT_CLIPPER_SCALE, toClipperPath } from './toolpaths/geometry'

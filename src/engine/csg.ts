@@ -22,7 +22,7 @@ import { barCentre, barPivotZ, isBarStock, isSquareStock } from '../types/barSto
 import { buildSurfaceIndex } from '../store/helpers/rotarySurface'
 import { aroundLowestSurfaceRadius, squareSheetFeatureBlock } from '../store/helpers/turnedSheet'
 import type { BarStock, Clamp, DimensionRef, MachineOrigin, Matrix2D, Project, RoundStock, SketchFeature, SketchProfile, Segment, SquareStock, Stock, Tab } from '../types/project'
-import { expandFeatureGeometry } from '../text'
+import { expandFeatureGeometry } from '../text/featureShapes'
 import { cannedShapeIsModel } from '../cannedShapes'
 import { modelFeatures } from '../store/helpers/featureRoles'
 import { aroundFeaturesActive, barSeedsModel } from '../store/helpers/projectType'

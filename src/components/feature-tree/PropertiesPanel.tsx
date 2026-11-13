@@ -42,7 +42,7 @@ import { machineOptionsForType, projectTypeLabelKey } from './projectTypeChoice'
 import { getDefinitionId, getInstanceIdsForDefinition } from '../../store/helpers/featureDefinitions'
 import { canChooseSubtract, isMachinable, sectionForOperation } from '../../store/helpers/featureRoles'
 import type { FeatureTreeSection } from '../../store/helpers/featureRoles'
-import { getFeatureGeometryProfiles } from '../../text'
+import { getFeatureGeometryProfiles } from '../../text/featureShapes'
 import { TextToolDialog } from '../project/TextToolDialog'
 import { textPathRefreshState } from '../../store/helpers/textPathSource'
 import {

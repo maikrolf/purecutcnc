@@ -426,4 +426,8 @@ export const featureTreeFr: Record<keyof typeof featureTreeEn, string> = {
   'featureTree.face.dialog.linkedStay.top.other': '{count} copies liées restent sur la face supérieure. Elles continuent de partager cette forme : la modifier sur l’une ou l’autre face les modifie toutes.',
   'featureTree.face.dialog.linkedStay.bottom.one': '{count} copie liée reste sur la face inférieure. Elle continue de partager cette forme : la modifier sur l’une ou l’autre face modifie les deux.',
   'featureTree.face.dialog.linkedStay.bottom.other': '{count} copies liées restent sur la face inférieure. Elles continuent de partager cette forme : la modifier sur l’une ou l’autre face les modifie toutes.',
+  'canned.nametag.name': 'Étiquette nominative',
+  'canned.nametag.summary': 'Étiquette nominative · {text}',
+  'canned.ornament.name': 'Ornement',
+  'canned.ornament.summary': 'Ornement · {text}',
 }

@@ -47,6 +47,8 @@ import { SLOT_EDITOR_REQUEST } from '../../cannedShapes/generators/slot'
 import { NGON_EDITOR_REQUEST } from '../../cannedShapes/generators/ngon'
 import { ROUND_RECT_EDITOR_REQUEST } from '../../cannedShapes/generators/roundRect'
 import { CHAMFER_RECT_EDITOR_REQUEST } from '../../cannedShapes/generators/chamferRect'
+import { NAMETAG_EDITOR_REQUEST } from '../../cannedShapes/generators/nametag'
+import { ORNAMENT_EDITOR_REQUEST } from '../../cannedShapes/generators/ornament'
 import {
   GEAR_CANNED_KIND,
   normalizeGearCannedParams,
@@ -123,6 +125,8 @@ const EDITOR_REQUESTS: Record<string, CannedShapeEditorRequest> = Object.fromEnt
     NGON_EDITOR_REQUEST,
     ROUND_RECT_EDITOR_REQUEST,
     CHAMFER_RECT_EDITOR_REQUEST,
+    NAMETAG_EDITOR_REQUEST,
+    ORNAMENT_EDITOR_REQUEST,
   ].map((request) => [request.kind, request]),
 )
 
@@ -404,7 +408,7 @@ function FlatCannedShapeEditPanel({
               <input
                 className="canvas-workflow-panel__count-input"
                 type="text"
-                inputMode={field.integer ? 'numeric' : 'decimal'}
+                inputMode={field.kind === 'text' ? undefined : field.integer ? 'numeric' : 'decimal'}
                 value={values[field.key] ?? ''}
                 onChange={(event) => {
                   const next = event.currentTarget.value

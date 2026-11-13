@@ -42,7 +42,7 @@ import {
 import { normalizeToolForProject, resolveFeatureZSpan } from '../../engine/toolpaths/geometry'
 import { CLAMP_KEEPOUT_EPSILON } from '../../engine/toolpaths/modelProtection'
 import type { ClipperPath } from '../../engine/toolpaths/types'
-import { getFeatureGeometryProfiles, resolveFeatureGeometryShapes } from '../../text'
+import { getFeatureGeometryProfiles, resolveFeatureGeometryShapes } from '../../text/featureShapes'
 import {
   getStockBounds,
   type FeatureOperation,

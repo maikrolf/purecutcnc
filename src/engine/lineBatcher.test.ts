@@ -15,7 +15,7 @@
  */
 
 import { LineSegments2 } from 'three/examples/jsm/lines/LineSegments2.js'
-import { getFeatureGeometryProfiles } from '../text'
+import { getFeatureGeometryProfiles } from '../text/featureShapes'
 import { newProject, rectProfile, roundStock } from '../types/project'
 import type { Project, SketchFeature, SketchProfile } from '../types/project'
 import { aroundFrame } from './aroundFrame'

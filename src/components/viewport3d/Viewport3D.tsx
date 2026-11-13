@@ -29,7 +29,7 @@ import { resolvedProjectFeatures } from '../../store/helpers/resolveFeatures'
 import { applyClampHighlight, applyFeatureHighlights, applyTabHighlight, buildOriginTriad, buildScene } from '../../engine/csg'
 import { getStockBounds, rectProfile } from '../../types/project'
 import { getFeaturesWorldBounds } from '../canvas/scenePrimitives'
-import { getFeatureGeometryProfiles } from '../../text'
+import { getFeatureGeometryProfiles } from '../../text/featureShapes'
 import {
   buildToolpathLinePositionChunks,
   buildToolpathOverlayLayers,

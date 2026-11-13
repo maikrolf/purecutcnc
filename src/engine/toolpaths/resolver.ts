@@ -18,7 +18,7 @@ import ClipperLib from 'clipper-lib'
 import type { ToolpathWarning } from './warningCodes'
 import type { Operation, OperationKind, Project, SketchFeature } from '../../types/project'
 import { getEffectiveStockProfile, rectProfile } from '../../types/project'
-import { expandFeatureGeometry, featureHasClosedGeometry, featureHasShapeWithOperation } from '../../text'
+import { expandFeatureGeometry, featureHasClosedGeometry, featureHasShapeWithOperation } from '../../text/featureShapes'
 import { resolveProject, type ResolvedProject } from '../../store/helpers/resolveFeatures'
 import type {
   ClipperPath,

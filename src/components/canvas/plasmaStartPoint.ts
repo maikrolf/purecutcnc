@@ -16,7 +16,7 @@
 
 import type { Operation, Point, Project } from '../../types/project'
 import { resolveProject } from '../../store/helpers/resolveFeatures'
-import { expandFeatureGeometry } from '../../text'
+import { expandFeatureGeometry } from '../../text/featureShapes'
 import { flattenProfile } from '../../engine/toolpaths/geometry'
 import { setupFace, setupForOperation } from '../../engine/setupOrientation'
 import { localPlasmaStartPoint } from '../../engine/toolpaths/plasmaStartPoint'

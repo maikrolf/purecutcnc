@@ -15,7 +15,7 @@
  */
 
 import ClipperLib from 'clipper-lib'
-import { DEFAULT_CLIPPER_SCALE } from '../engine/toolpaths/geometry'
+import { DEFAULT_CLIPPER_SCALE } from '../engine/clipperScale'
 import type { Point } from '../types/project'
 
 const POINT_EPSILON = 1e-9

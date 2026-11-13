@@ -32,7 +32,8 @@ import {
   isDimensionDangling,
   measureValue,
 } from '../../sketch/dimensions'
-import { generateTextShapes, getFeatureGeometryBounds, getFeatureGeometryProfiles } from '../../text'
+import { getFeatureGeometryBounds, getFeatureGeometryProfiles } from '../../text/featureShapes'
+import { generateTextShapes } from '../../text'
 import { getProfileBounds, getStockBounds, rectProfile } from '../../types/project'
 import type { Point, Project, SketchFeature, SketchProfile } from '../../types/project'
 import { formatAngle, formatLength } from '../../utils/units'

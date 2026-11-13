@@ -19,7 +19,7 @@
  * design-print engine (visible-design print extents). Framework-free.
  */
 
-import { getFeatureGeometryProfiles } from '../text'
+import { getFeatureGeometryProfiles } from '../text/featureShapes'
 import { getProfileBounds, rectProfile } from '../types/project'
 import type { Bounds2D, Project, SketchProfile } from '../types/project'
 import { resolvedProjectFeatures } from '../store/helpers/resolveFeatures'

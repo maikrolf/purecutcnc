@@ -47,7 +47,7 @@ import type {
 import { rotaryCylinderSegments } from '../../engine/rotaryCylinder'
 import { activeSetup, aroundUnavailableReason } from './activeFace'
 import { resolveFeatureInstance, resolvedProjectFeatures } from './resolveFeatures'
-import { getFeatureGeometryProfiles } from '../../text'
+import { getFeatureGeometryProfiles } from '../../text/featureShapes'
 import { sampleProfilePoints } from '../../types/project'
 import type {
   TurnCannedProfile,

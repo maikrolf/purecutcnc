@@ -661,4 +661,9 @@ export const dialogsDe: Record<keyof typeof dialogsEn, string> = {
   'dialogs.rotarySolid.profile.error.outOfBar': 'Das Profil reicht über die Stangenenden hinaus.',
   'dialogs.rotarySolid.profile.error.missingSource': 'Die Quellform existiert nicht mehr.',
   'dialogs.rotarySolid.profile.error.unsupported': 'Die gewählte Form ist keine gezeichnete Kontur.',
+  'dialogs.generators.title': 'Generatoren',
+  'dialogs.generators.choose': 'Generator wählen',
+  'dialogs.generators.add': 'Hinzufügen',
+  'dialogs.generators.invalid': 'Füllen Sie jedes Feld mit einem gültigen Wert.',
+  'dialogs.generators.field.padding': 'Randabstand',
 }

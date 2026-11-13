@@ -22,6 +22,7 @@ import { useOutsideDismiss } from '../../hooks/useOutsideDismiss'
 import { useProjectStore } from '../../store/projectStore'
 import { activeFace, aroundSketchAuthoringRefused } from '../../store/helpers/activeFace'
 import { TextToolDialog } from '../project/TextToolDialog'
+import { GeneratorGalleryDialog } from '../generators/GeneratorGalleryDialog'
 import type { TextToolConfig } from '../../text'
 import { useCreationShapeCommands, type CreationShape } from '../../commands/creationShapes'
 import { useSketchCommands } from '../../commands/sketchCommands'
@@ -148,6 +149,7 @@ export function ToolRail({ onZoomToModel: _onZoomToModel, onImportComplete: _onI
   void _onImportComplete
 
   const [showTextDialog, setShowTextDialog] = useState(false)
+  const [showGeneratorDialog, setShowGeneratorDialog] = useState(false)
   const [showCreationPopover, setShowCreationPopover] = useState(false)
   const [showAlignPopover, setShowAlignPopover] = useState(false)
   const [showDistributePopover, setShowDistributePopover] = useState(false)
@@ -307,6 +309,16 @@ export function ToolRail({ onZoomToModel: _onZoomToModel, onImportComplete: _onI
             onClick={lastCreationOption.onActivate}
           />
         </div>
+
+        {/* Generators: finished parametric recipes (name tag, ornament) that
+            insert a canned feature at the stock centre. */}
+        <div className="tool-rail__section">
+          <RailButton
+            icon="composite"
+            label={t('appShell.toolRail.generators')}
+            onClick={() => setShowGeneratorDialog(true)}
+          />
+        </div>
         </>
         )}
 
@@ -382,6 +394,13 @@ export function ToolRail({ onZoomToModel: _onZoomToModel, onImportComplete: _onI
       {showTextDialog && typeof document !== 'undefined'
         ? createPortal(
             <TextToolDialog onClose={() => setShowTextDialog(false)} onConfirm={confirmTextTool} />,
+            document.body,
+          )
+        : null}
+
+      {showGeneratorDialog && typeof document !== 'undefined'
+        ? createPortal(
+            <GeneratorGalleryDialog onClose={() => setShowGeneratorDialog(false)} />,
             document.body,
           )
         : null}

@@ -152,4 +152,5 @@ export const appShellEs: Record<keyof typeof appShellEn, string> = {
   'appShell.face.showOtherSide': 'Mostrar la otra cara como fantasma',
   'appShell.face.hideOtherSide': 'Ocultar la otra cara',
   'appShell.face.showOtherSideItem': 'Mostrar la otra cara',
+  'appShell.toolRail.generators': 'Generadores',
 }

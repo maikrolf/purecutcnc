@@ -198,4 +198,5 @@ export const appShellEn = {
   'appShell.face.showOtherSide': 'Show the other side as a ghost',
   'appShell.face.hideOtherSide': 'Hide the other side',
   'appShell.face.showOtherSideItem': 'Show other side',
+  'appShell.toolRail.generators': 'Generators',
 } as const satisfies Record<string, string>

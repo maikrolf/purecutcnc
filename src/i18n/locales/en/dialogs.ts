@@ -665,4 +665,9 @@ export const dialogsEn = {
   'dialogs.rotarySolid.profile.error.outOfBar': 'The profile reaches past the bar ends.',
   'dialogs.rotarySolid.profile.error.missingSource': 'The source shape no longer exists.',
   'dialogs.rotarySolid.profile.error.unsupported': 'The picked shape is not a drawn outline.',
+  'dialogs.generators.title': 'Generators',
+  'dialogs.generators.choose': 'Choose a generator',
+  'dialogs.generators.add': 'Add',
+  'dialogs.generators.invalid': 'Fill in every field with a usable value.',
+  'dialogs.generators.field.padding': 'Padding',
 } as const satisfies Record<string, string>

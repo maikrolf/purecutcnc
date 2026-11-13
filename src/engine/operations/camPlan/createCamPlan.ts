@@ -21,7 +21,7 @@ import { barCentre, barMaxRadius, barPivotZ, isBarStock, isSquareStock } from '.
 import { buildSurfaceIndex } from '../../../store/helpers/rotarySurface'
 import { squareSheetFeatureBlock } from '../../../store/helpers/turnedSheet'
 import { FLUTES_CANNED_KIND, THREAD_CANNED_KIND } from '../../../cannedShapes/generators/kinds'
-import { getFeatureGeometryBounds } from '../../../text'
+import { getFeatureGeometryBounds } from '../../../text/featureShapes'
 import { loadSTLTransformedGeometry } from '../../csg'
 import { resolveDimensionRef } from '../../toolpaths/geometry'
 import { generateEdgeRestRegionDrafts, generatePocketRestRegionDrafts } from '../../toolpaths/restRegions'

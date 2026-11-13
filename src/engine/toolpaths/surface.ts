@@ -127,7 +127,7 @@ import {
   intersectClipperPaths,
   unionClipperPaths,
 } from './modelProtection'
-import { expandFeatureGeometry, featureHasClosedGeometry } from '../../text'
+import { expandFeatureGeometry, featureHasClosedGeometry } from '../../text/featureShapes'
 import { barEntryStartZ, barSectionAtZ, clipPathsToBarSection } from './barSection'
 import { resolvedProjectFeatures } from '../../store/helpers/resolveFeatures'
 import { isFeatureFirst, perFeatureOperations, mergePocketToolpathResults } from './multiFeature'

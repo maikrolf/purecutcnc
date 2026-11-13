@@ -18,6 +18,7 @@ import { useProjectStore } from '../../../store/projectStore'
 import { AlignmentActions, DistributionActions } from './AlignmentActions'
 import { BackdropEditActions } from './BackdropEditActions'
 import { CreationActions } from './CreationActions'
+import { GeneratorActions } from './GeneratorActions'
 import { FeatureEditActions } from './FeatureEditActions'
 import { ShapeToolActions } from './ShapeToolActions'
 import { ToolbarDialog } from './ToolbarDialog'
@@ -52,6 +53,7 @@ export function CreationToolbar({
           onRoundRect={toolbar.creationCommands.shapeCommands[10].onActivate}
           onChamferRect={toolbar.creationCommands.shapeCommands[11].onActivate}
         />
+        <GeneratorActions tooltipSide={layout === 'vertical' ? 'right' : 'bottom'} />
         <ShapeToolActions
           pendingShapeAction={toolbar.sketchCommands.boolean.join.active ? 'join' : toolbar.sketchCommands.boolean.cut.active ? 'cut' : null}
           hasCannedSelection={toolbar.sketchCommands.predicates.hasCannedSelectedFeatures}

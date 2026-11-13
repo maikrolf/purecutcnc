@@ -52,7 +52,7 @@ import { isBarStock } from '../../types/barStock'
 import { projectsEqual } from '../../store/helpers/normalize'
 import { isConstruction, isRegion } from '../../store/helpers/featureRoles'
 import { resolveFeatureInstances, resolveFeatureRow } from '../../store/helpers/resolveFeatures'
-import { getFeatureGeometryProfiles } from '../../text'
+import { getFeatureGeometryProfiles } from '../../text/featureShapes'
 import { normalizeToolForProject } from './geometry'
 import { foldsNonTargetSubtracts } from './resolver'
 
