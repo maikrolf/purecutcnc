@@ -86,6 +86,15 @@ test('engraves the letters into the plate', () => {
   assert(shapes.slice(1).some((shape) => shape.operation === 'subtract'), 'the letters are cuts')
 })
 
+test('splits the big letter where the name crosses it', () => {
+  const shapes = resolveCannedShapeShapes({ operation: 'add', canned: { kind: MONOGRAM_CANNED_KIND, params } })
+  const halves = shapes.filter((shape) => shape.name?.startsWith('Letter'))
+  assert(halves.length === 2, `expected two letter halves, got ${halves.length}`)
+  for (const half of halves) {
+    assert(half.operation === 'subtract', 'each half is a cut')
+  }
+})
+
 test('leaves the year out when it is 0', () => {
   const withYear = monogramProfiles(params).length
   const withoutYear = monogramProfiles({ ...params, year: 0 }).length

@@ -17,19 +17,22 @@
 /**
  * Monogram sign as a canned shape.
  *
- * A rounded plate with the name's first letter cut large above the name, and an
- * optional year below it. Every letter is outline text from `src/text`, and the
- * plate is the one Add outline, so the nesting rule engraves the letters
- * (issue #1112). The plate is sized from the text it holds, so changing the
- * name resizes the sign.
+ * A rounded plate with the name's first letter cut large and split by the band
+ * the name runs through, plus an optional year below. Every letter is outline
+ * text from `src/text`, and the plate is the one Add outline, so the nesting
+ * rule engraves the letters (issue #1112). The letter halves are a true
+ * difference (`geometry/profileBoolean`), and the plate is sized from the text
+ * it holds, so changing the name resizes the sign.
  */
 
 import {
   getProfileBounds,
+  rectProfile,
   type CannedShapeParams,
   type SketchProfile,
 } from '../../types/project'
 import { transformProfile } from '../../geometry/profile'
+import { differenceProfiles } from '../../geometry/profileBoolean'
 import { roundedRectProfile } from '../../store/helpers/cannedRectProfiles'
 import { generateTextShapes } from '../../text'
 import { defineCannedShape, type CannedShapeOutline } from '../types'
@@ -49,11 +52,15 @@ export type MonogramCannedParams = CannedShapeParams & {
 
 const MAX_TEXT_LENGTH = 64
 /** The initial is this many times the name's cap height. */
-const INITIAL_SCALE = 3
+const INITIAL_SCALE = 5
 /** Year line, relative to the name's cap height. */
 const YEAR_SCALE = 0.6
 /** Gap between stacked lines, relative to the name's cap height. */
 const LINE_GAP = 0.5
+/** Height of the band cut out of the big letter, relative to the name's cap height. */
+const BAND_SCALE = 1.2
+/** Where the name crosses the letter, as a fraction of the letter's height. */
+const BAND_Y = 0.64
 
 export function normalizeMonogramCannedParams(raw: CannedShapeParams): MonogramCannedParams | null {
   const text = typeof raw.text === 'string' ? raw.text.trim() : ''
@@ -107,13 +114,22 @@ function monogramOutlines(params: MonogramCannedParams): CannedShapeOutline[] {
   if (!initial || !name) return []
 
   const gap = params.size * LINE_GAP
-  const runs = [initial, name, ...(year ? [year] : [])]
-  const contentWidth = Math.max(...runs.map((run) => run.width))
-  const contentHeight = runs.reduce((total, run) => total + run.height, 0) + gap * (runs.length - 1)
+  const contentWidth = Math.max(initial.width, name.width, year?.width ?? 0)
+  const contentHeight = initial.height + (year ? gap + year.height : 0)
 
   const plateWidth = contentWidth + params.padding * 2
   const plateHeight = contentHeight + params.padding * 2
   const corner = Math.min(plateWidth, plateHeight) * 0.12
+
+  const initialTop = -contentHeight / 2
+  // The name crosses the big letter, so the letter is cut by the band the name
+  // runs through. The band sits below the letter's middle arm, so the top piece
+  // still reads as the letter rather than as its corner.
+  const nameCentre = initialTop + initial.height * BAND_Y
+  const bandHeight = params.size * BAND_SCALE
+  const bandWidth = initial.width + params.size * 2
+  const band = rectProfile(-bandWidth / 2, nameCentre - bandHeight / 2, bandWidth, bandHeight)
+  const halves = differenceProfiles(placeRun(initial, 0, initialTop).map((outline) => outline.profile), [band])
 
   const outlines: CannedShapeOutline[] = [
     {
@@ -124,12 +140,12 @@ function monogramOutlines(params: MonogramCannedParams): CannedShapeOutline[] {
       ),
       name: 'Plate',
     },
+    ...halves.map((profile, index) => ({ profile, name: `Letter ${index + 1}` })),
+    ...placeRun(name, 0, nameCentre - name.height / 2),
   ]
 
-  let top = -contentHeight / 2
-  for (const run of runs) {
-    outlines.push(...placeRun(run, 0, top))
-    top += run.height + gap
+  if (year) {
+    outlines.push(...placeRun(year, 0, initialTop + initial.height + gap))
   }
 
   return outlines
