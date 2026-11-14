@@ -65,7 +65,7 @@ import {
   translateAcrossBar,
 } from '../../test/rotaryBoltFixture'
 import { projectsEqual } from '../../store/helpers/normalize'
-import { getFeatureGeometryProfiles } from '../../text'
+import { getFeatureGeometryProfiles } from '../../text/featureShapes'
 import {
   diffToolpathInputs,
   featureInstanceComputationEquals,

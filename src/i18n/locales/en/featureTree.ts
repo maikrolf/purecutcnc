@@ -527,4 +527,12 @@ export const featureTreeEn = {
   'featureTree.face.dialog.linkedStay.top.other': '{count} linked copies stay on the top face. They keep sharing this shape, so editing the shape on either face changes all of them.',
   'featureTree.face.dialog.linkedStay.bottom.one': '{count} linked copy stays on the bottom face. It keeps sharing this shape, so editing the shape on either face changes both.',
   'featureTree.face.dialog.linkedStay.bottom.other': '{count} linked copies stay on the bottom face. They keep sharing this shape, so editing the shape on either face changes all of them.',
+  'canned.nametag.name': 'Name tag',
+  'canned.nametag.summary': 'Name tag · {text}',
+  'canned.ornament.name': 'Ornament',
+  'canned.ornament.summary': 'Ornament · {text}',
+  'canned.heart.name': 'Heart tag',
+  'canned.heart.summary': 'Heart tag · {text}',
+  'canned.monogram.name': 'Monogram sign',
+  'canned.monogram.summary': 'Monogram · {text}',
 } as const satisfies Record<string, string>

@@ -193,4 +193,5 @@ export const appShellDe: Record<keyof typeof appShellEn, string> = {
   'appShell.face.showOtherSide': 'Andere Seite als Geisterbild anzeigen',
   'appShell.face.hideOtherSide': 'Andere Seite ausblenden',
   'appShell.face.showOtherSideItem': 'Andere Seite anzeigen',
+  'appShell.toolRail.generators': 'Generatoren',
 }

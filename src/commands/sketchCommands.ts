@@ -32,7 +32,7 @@ import type {
 } from '../store/types'
 import type { FeatureDistributionMode } from '../sketch/featureDistribution'
 import type { TextLayoutKind } from '../sketch/textPlacement'
-import { featureHasClosedGeometry } from '../text'
+import { featureHasClosedGeometry } from '../text/featureShapes'
 import { cannedShapeLabelKey, isCannedFeature } from '../cannedShapes'
 import { useNoticeStore } from '../store/noticeStore'
 import { resolveFeatureInstance, resolveFeatureInstances } from '../store/helpers/resolveFeatures'

@@ -667,4 +667,10 @@ export const dialogsZhCN: Record<keyof typeof dialogsEn, string> = {
   'dialogs.rotarySolid.profile.error.outOfBar': '轮廓超出棒料端部。',
   'dialogs.rotarySolid.profile.error.missingSource': '源形状已不存在。',
   'dialogs.rotarySolid.profile.error.unsupported': '所选形状不是绘制的轮廓。',
+  'dialogs.generators.title': '生成器',
+  'dialogs.generators.choose': '选择生成器',
+  'dialogs.generators.add': '添加',
+  'dialogs.generators.invalid': '请为每个字段填写有效值。',
+  'dialogs.generators.field.padding': '边距',
+  'dialogs.generators.field.year': '年份',
 }

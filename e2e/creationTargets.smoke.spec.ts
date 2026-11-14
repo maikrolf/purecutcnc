@@ -78,6 +78,34 @@ test('foldered construction conversion updates the landscape-tablet tree immedia
   await expectConvertedFeatureInConstruction(app.page)
 })
 
+test('generator gallery inserts a name tag from the toolbar', async ({ app }) => {
+  await app.page.getByRole('button', { name: 'Generators', exact: true }).first().click()
+
+  const dialog = app.page.getByRole('dialog', { name: 'Generators', exact: true })
+  await expect(dialog).toBeVisible()
+  await expect(dialog.getByRole('button', { name: 'Name tag', exact: true })).toBeVisible()
+  await expect(dialog.getByRole('button', { name: 'Ornament', exact: true })).toBeVisible()
+
+  await dialog.getByRole('button', { name: 'Add', exact: true }).click()
+  await expect(dialog).toHaveCount(0)
+  expect(await getFeatureCount(app.page)).toBe(1)
+  await expect(app.page.locator('.tree-row--feature').filter({ hasText: 'Name tag' })).toHaveCount(1)
+})
+
+test.describe('generator gallery on a touch tablet', () => {
+  test.use({ hasTouch: true, viewport: { width: 1024, height: 768 } })
+
+  test('opens from the tablet rail', async ({ app }) => {
+    const button = app.page.locator('.app-left-rail--tablet').getByRole('button', { name: 'Generators', exact: true })
+    await expect(button).toBeVisible()
+    await button.click()
+
+    const dialog = app.page.getByRole('dialog', { name: 'Generators', exact: true })
+    await expect(dialog).toBeVisible()
+    await expect(dialog.getByRole('button', { name: 'Ornament', exact: true })).toBeVisible()
+  })
+})
+
 test('sticky drawing re-arms the same shape tool', async ({ app }) => {
   await startAddRectPlacement(app.page)
 

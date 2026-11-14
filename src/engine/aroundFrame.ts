@@ -46,7 +46,7 @@
 import { getStockBounds, isAroundSetup, rectProfile } from '../types/project'
 import type { BarStock, Operation, Project } from '../types/project'
 import { barCentre, barInscribedRadius, isBarStock } from '../types/barStock'
-import { getFeatureGeometryBounds } from '../text'
+import { getFeatureGeometryBounds } from '../text/featureShapes'
 import { POLYGON_CANNED_KIND, TURN_CANNED_KIND } from '../cannedShapes/generators/kinds'
 import { normalizePolygonCannedParams } from '../cannedShapes/generators/polygon'
 import { resolveFeatureInstance } from '../store/helpers/resolveFeatures'

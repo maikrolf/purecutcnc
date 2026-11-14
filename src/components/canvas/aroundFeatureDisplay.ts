@@ -25,7 +25,7 @@
  */
 
 import { isCannedFeature } from '../../cannedShapes'
-import { getFeatureGeometryProfiles } from '../../text'
+import { getFeatureGeometryProfiles } from '../../text/featureShapes'
 import type { SketchFeature, SketchProfile } from '../../types/project'
 import { foldProfileToSheet } from './aroundDisplayWrap'
 import type { AroundWrapWindow } from './aroundDisplayWrap'

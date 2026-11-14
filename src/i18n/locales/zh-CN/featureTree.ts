@@ -516,4 +516,12 @@ export const featureTreeZhCN: Record<keyof typeof featureTreeEn, string> = {
   'featureTree.face.dialog.linkedStay.top.other': '{count} 个关联副本留在顶面。它们仍共享此形状，因此在任一面编辑形状都会更改全部副本。',
   'featureTree.face.dialog.linkedStay.bottom.one': '{count} 个关联副本留在底面。它仍共享此形状，因此在任一面编辑形状都会同时更改两者。',
   'featureTree.face.dialog.linkedStay.bottom.other': '{count} 个关联副本留在底面。它们仍共享此形状，因此在任一面编辑形状都会更改全部副本。',
+  'canned.nametag.name': '姓名牌',
+  'canned.nametag.summary': '姓名牌 · {text}',
+  'canned.ornament.name': '装饰牌',
+  'canned.ornament.summary': '装饰牌 · {text}',
+  'canned.heart.name': '心形姓名牌',
+  'canned.heart.summary': '心形姓名牌 · {text}',
+  'canned.monogram.name': '字母组合牌',
+  'canned.monogram.summary': '字母组合牌 · {text}',
 }

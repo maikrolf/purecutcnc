@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { featureHasClosedGeometry, featureHasShapeWithOperation } from '../../text'
+import { featureHasClosedGeometry, featureHasShapeWithOperation } from '../../text/featureShapes'
 import { convertLength } from '../../utils/units'
 import { spacingToScallopHeight } from '../../engine/toolpaths/scallopHeight'
 import { roundScallopHeight } from '../../utils/scallopHeightFormat'

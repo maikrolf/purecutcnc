@@ -510,4 +510,12 @@ export const featureTreeDe: Record<keyof typeof featureTreeEn, string> = {
   'featureTree.face.dialog.linkedStay.top.other': '{count} verknüpfte Kopien bleiben auf der Oberseite. Sie teilen sich weiterhin diese Form, daher ändert eine Bearbeitung der Form auf einer der Seiten alle.',
   'featureTree.face.dialog.linkedStay.bottom.one': '{count} verknüpfte Kopie bleibt auf der Unterseite. Sie teilt sich weiterhin diese Form, daher ändert eine Bearbeitung der Form auf einer der Seiten beide.',
   'featureTree.face.dialog.linkedStay.bottom.other': '{count} verknüpfte Kopien bleiben auf der Unterseite. Sie teilen sich weiterhin diese Form, daher ändert eine Bearbeitung der Form auf einer der Seiten alle.',
+  'canned.nametag.name': 'Namensschild',
+  'canned.nametag.summary': 'Namensschild · {text}',
+  'canned.ornament.name': 'Ornament',
+  'canned.ornament.summary': 'Ornament · {text}',
+  'canned.heart.name': 'Herz-Anhänger',
+  'canned.heart.summary': 'Herz-Anhänger · {text}',
+  'canned.monogram.name': 'Monogramm-Schild',
+  'canned.monogram.summary': 'Monogramm · {text}',
 }

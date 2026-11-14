@@ -57,7 +57,7 @@
  */
 
 import assert from 'node:assert/strict'
-import golden from './crossAxisHeldPrograms.golden.json'
+import golden from './crossAxisHeldPrograms.golden.json' with { type: 'json' }
 import { parseGcodeMotion } from './gcodeMotionParser'
 import type { ParsedGcodeMove } from './gcodeMotionParser'
 import { createEmittedValueFormatter, crossAxisHeldByTouchOff } from './motionPipeline'

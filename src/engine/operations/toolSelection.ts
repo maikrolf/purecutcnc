@@ -38,7 +38,7 @@
 import type { OperationKind, OperationTarget, Project, Tool, ToolType } from '../../types/project'
 import { getStockBounds } from '../../types/project'
 import { isMachinable } from '../../store/helpers/featureRoles'
-import { getFeatureGeometryBounds } from '../../text'
+import { getFeatureGeometryBounds } from '../../text/featureShapes'
 import { convertLength } from '../../utils/units'
 import type { ToolLibraryEntry } from '../../toolLibrary'
 import { resolveFeatureInstances } from '../../store/helpers/resolveFeatures'

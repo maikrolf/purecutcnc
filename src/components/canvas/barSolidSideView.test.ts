@@ -63,7 +63,7 @@ import { BOTTOM_SETUP_ID, projectWithFeatures, withBottomSetup } from '../../tes
 import { planRotarySolid } from '../../store/helpers/rotarySolids'
 import { resolvedProjectFeatures } from '../../store/helpers/resolveFeatures'
 import type { SelectionState } from '../../store/types'
-import { getFeatureGeometryProfiles } from '../../text'
+import { getFeatureGeometryProfiles } from '../../text/featureShapes'
 import { POLYGON_CANNED_KIND, TURN_CANNED_KIND } from '../../cannedShapes/generators/kinds'
 import { rotarySolidAlong, rotarySolidFrame } from '../../cannedShapes/generators/rotarySolidParams'
 import { drawOtherFace, drawRotarySolidSideViews, isRotarySolid } from './faceOverlay'

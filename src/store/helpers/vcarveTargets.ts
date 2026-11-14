@@ -31,7 +31,7 @@
  */
 
 import type { SketchFeature } from '../../types/project'
-import { featureHasClosedGeometry } from '../../text'
+import { featureHasClosedGeometry } from '../../text/featureShapes'
 
 /**
  * True when `feature` is a valid V-carve machining target: a closed Subtract

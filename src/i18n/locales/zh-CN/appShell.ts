@@ -199,4 +199,5 @@ export const appShellZhCN: Record<keyof typeof appShellEn, string> = {
   'appShell.face.showOtherSide': '以虚影显示另一面',
   'appShell.face.hideOtherSide': '隐藏另一面',
   'appShell.face.showOtherSideItem': '显示另一面',
+  'appShell.toolRail.generators': '生成器',
 }

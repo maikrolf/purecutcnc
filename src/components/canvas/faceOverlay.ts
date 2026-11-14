@@ -29,7 +29,7 @@
 import { cannedShapeIsModel } from '../../cannedShapes'
 import { activeFace, ghostFeatureIds, isThroughFeature } from '../../store/helpers/activeFace'
 import type { ResolvedSketchFeature } from '../../store/helpers/resolveFeatures'
-import { getFeatureGeometryProfiles } from '../../text'
+import { getFeatureGeometryProfiles } from '../../text/featureShapes'
 import { getProfileBounds } from '../../types/project'
 import type { FlatFace, Point, Project, SetupFace, SketchFeature } from '../../types/project'
 import { canvasColors, canvasRgba } from './canvasPalette'

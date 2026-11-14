@@ -27,7 +27,7 @@
 import type { CannedShapeParams } from '../../types/project'
 import type { CannedShapeEditorRequest } from './editorRequest'
 
-/** The shape's stored numbers as editable field text. */
+/** The shape's stored values as editable field text. */
 export function editorInitialValues(
   request: CannedShapeEditorRequest,
   params: CannedShapeParams,
@@ -35,14 +35,15 @@ export function editorInitialValues(
   const values: Record<string, string> = {}
   for (const field of request.fields) {
     const value = params[field.key]
-    values[field.key] = typeof value === 'number' ? String(value) : ''
+    values[field.key] = typeof value === 'number' || typeof value === 'string' ? String(value) : ''
   }
   return values
 }
 
 /**
- * Field text back to a parameter set, or `null` when a field is empty or not a
- * number. The request's `normalize` then applies the generator's own rules.
+ * Field text back to a parameter set, or `null` when a numeric field is empty
+ * or not a number. The request's `normalize` then applies the generator's own
+ * rules.
  */
 export function editorParamsFromValues(
   request: CannedShapeEditorRequest,
@@ -51,6 +52,11 @@ export function editorParamsFromValues(
   const params: CannedShapeParams = {}
   for (const field of request.fields) {
     const text = values[field.key]?.trim() ?? ''
+    if (field.kind === 'text') {
+      if (text === '') return null
+      params[field.key] = text
+      continue
+    }
     if (text === '') return null
     const parsed = Number(text)
     if (!Number.isFinite(parsed)) return null

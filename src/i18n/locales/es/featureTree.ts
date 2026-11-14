@@ -426,4 +426,12 @@ export const featureTreeEs: Record<keyof typeof featureTreeEn, string> = {
   'featureTree.face.dialog.linkedStay.top.other': '{count} copias vinculadas se quedan en la cara superior. Siguen compartiendo esta forma, así que editar la forma en cualquiera de las caras las cambia todas.',
   'featureTree.face.dialog.linkedStay.bottom.one': '{count} copia vinculada se queda en la cara inferior. Sigue compartiendo esta forma, así que editar la forma en cualquiera de las caras cambia ambas.',
   'featureTree.face.dialog.linkedStay.bottom.other': '{count} copias vinculadas se quedan en la cara inferior. Siguen compartiendo esta forma, así que editar la forma en cualquiera de las caras las cambia todas.',
+  'canned.nametag.name': 'Etiqueta de nombre',
+  'canned.nametag.summary': 'Etiqueta de nombre · {text}',
+  'canned.ornament.name': 'Adorno',
+  'canned.ornament.summary': 'Adorno · {text}',
+  'canned.heart.name': 'Etiqueta de corazón',
+  'canned.heart.summary': 'Etiqueta de corazón · {text}',
+  'canned.monogram.name': 'Letrero de monograma',
+  'canned.monogram.summary': 'Monograma · {text}',
 }

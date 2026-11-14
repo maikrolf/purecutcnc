@@ -35,7 +35,7 @@ import {
   type TextLayout,
 } from '../types/project'
 import { projectWithFeatures } from '../test/projectFixtures'
-import { getFeatureGeometryProfiles } from '../text'
+import { getFeatureGeometryProfiles } from '../text/featureShapes'
 import { defaultGearCreationParams } from '../sketch/gearProfile'
 import { resolveCannedShapeProfiles } from '../cannedShapes'
 import { resolveFeatureInstance } from './helpers/resolveFeatures'

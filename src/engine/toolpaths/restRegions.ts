@@ -26,7 +26,7 @@ import {
   type RegionMaskMode,
   type SketchFeature,
 } from '../../types/project'
-import { expandFeatureGeometry, featureHasClosedGeometry } from '../../text'
+import { expandFeatureGeometry, featureHasClosedGeometry } from '../../text/featureShapes'
 import {
   DEFAULT_CLIPPER_SCALE,
   flattenProfile,

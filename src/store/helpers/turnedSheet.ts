@@ -42,7 +42,7 @@
 import type { DimensionRef, Operation, Project } from '../../types/project'
 import { convertToolUnits } from '../../utils/units'
 import { barInscribedRadius, isBarStock, isSquareStock } from '../../types/barStock'
-import { getFeatureGeometryBounds } from '../../text'
+import { getFeatureGeometryBounds } from '../../text/featureShapes'
 import { aroundFeaturesActive } from './projectType'
 import { resolveFeatureInstance } from './resolveFeatures'
 import {

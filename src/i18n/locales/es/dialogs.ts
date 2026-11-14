@@ -617,4 +617,10 @@ export const dialogsEs: Record<keyof typeof dialogsEn, string> = {
   'dialogs.rotarySolid.profile.error.outOfBar': 'El perfil sobresale de los extremos de la barra.',
   'dialogs.rotarySolid.profile.error.missingSource': 'La forma de origen ya no existe.',
   'dialogs.rotarySolid.profile.error.unsupported': 'La forma elegida no es un contorno dibujado.',
+  'dialogs.generators.title': 'Generadores',
+  'dialogs.generators.choose': 'Elige un generador',
+  'dialogs.generators.add': 'Añadir',
+  'dialogs.generators.invalid': 'Rellena todos los campos con un valor válido.',
+  'dialogs.generators.field.padding': 'Margen',
+  'dialogs.generators.field.year': 'Año',
 }

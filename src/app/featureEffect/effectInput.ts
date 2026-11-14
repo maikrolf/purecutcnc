@@ -30,7 +30,7 @@
  * says they are never warned about.
  */
 
-import { resolveFeatureGeometryShapes } from '../../text'
+import { resolveFeatureGeometryShapes } from '../../text/featureShapes'
 import { aroundFeaturesActive } from '../../store/helpers/projectType'
 import type { ResolvedSketchFeature } from '../../store/helpers/resolveFeatures'
 import { isRoundStock, type DimensionRef, type Project } from '../../types/project'

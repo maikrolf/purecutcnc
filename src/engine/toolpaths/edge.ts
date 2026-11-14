@@ -20,7 +20,7 @@ import type { ToolpathWarning } from './warningCodes'
 import { appendUniqueWarning } from './warningDedup'
 import type { Operation, Point, Project, SketchFeature, Tab } from '../../types/project'
 import { isTrochoidalEdgeRoughing, tabShape } from '../../types/project'
-import { expandFeatureGeometry, featureHasClosedGeometry } from '../../text'
+import { expandFeatureGeometry, featureHasClosedGeometry } from '../../text/featureShapes'
 import type { ClipperPath, ResolvedPocketRegion, ToolpathBounds, ToolpathMove, ToolpathPoint, ToolpathResult } from './types'
 import {
   DEFAULT_CLIPPER_SCALE,

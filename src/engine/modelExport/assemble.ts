@@ -18,7 +18,7 @@ import type { Manifold as ManifoldSolid } from 'manifold-3d'
 import type { ToolpathWarning } from '../toolpaths/warningCodes'
 import { buildFeatureSolid, getManifoldModule, loadSTLTransformedGeometry } from '../csg'
 import { negatePlanYPositions, reverseTriangleWinding } from '../importedMesh'
-import { expandFeatureGeometry } from '../../text'
+import { expandFeatureGeometry } from '../../text/featureShapes'
 import { resolvedProjectFeatures } from '../../store/helpers/resolveFeatures'
 import type { Project, SketchFeature } from '../../types/project'
 import {

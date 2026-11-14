@@ -18,11 +18,17 @@ the shared primitives live here instead.
   into Béziers otherwise). Moved here from `store/helpers/resolveFeatures.ts`,
   which re-exports them, so the canned-shape registry can place outlines under a
   non-similar transform without importing the text module (#1131).
+- `profileBoolean.ts` — `differenceProfiles(subject, clip)`: `subject` minus
+  `clip` via `clipper-lib`, returned as flat closed line profiles in nesting
+  order so a hole comes back after its parent. Used by generators that must cut
+  a shape at generation time (the monogram's split initial). `profileBoolean.test.ts`
+  covers the split, the untouched subject and the hole.
 - `profile.test.ts` — direct unit tests, including the `circle`-segment cases
   that private copies of these helpers historically got wrong (issue #234).
 
 ## Conventions
-- Pure and side-effect free. No store access, no React, no Clipper/Three.
+- Pure and side-effect free. No store access, no React, no Three. Clipper is
+  allowed only in `profileBoolean.ts`, which samples profiles to points.
 - Anything here must handle **every** segment kind that carries points beyond
   `to`: `arc` and `circle` both have a `center`, `bezier` has two controls.
   Forgetting one leaves those points untransformed and silently misplaces

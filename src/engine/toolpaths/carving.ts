@@ -18,7 +18,7 @@ import { findOperationTool } from '../../toolPolicy'
 import type { Operation, Point, Project } from '../../types/project'
 import { isTrochoidalCarve } from '../../types/project'
 import type { ToolpathWarning } from './warningCodes'
-import { expandFeatureGeometry } from '../../text'
+import { expandFeatureGeometry } from '../../text/featureShapes'
 import type { ToolpathBounds, ToolpathMove, ToolpathPoint, ToolpathResult } from './types'
 import {
   checkMaxCutDepthWarning,

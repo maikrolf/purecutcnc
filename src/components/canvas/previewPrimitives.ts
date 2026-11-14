@@ -29,7 +29,7 @@ import {
   visiblePackedSegmentOffsets,
   type DisplaySegment,
 } from './toolpathDisplay'
-import { getFeatureGeometryBounds } from '../../text'
+import { getFeatureGeometryBounds } from '../../text/featureShapes'
 import { featureDisplayProfiles } from './aroundFeatureDisplay'
 import type { AroundWrapWindow } from './aroundDisplayWrap'
 import {

@@ -22,7 +22,7 @@
  * Run with: npx tsx src/text/fontData.test.ts
  */
 
-import helvetikerRegular from 'three/examples/fonts/helvetiker_regular.typeface.json'
+import helvetikerRegular from 'three/examples/fonts/helvetiker_regular.typeface.json' with { type: 'json' }
 import { parseFontJson } from './fontData'
 
 function assert(condition: boolean, message: string) {

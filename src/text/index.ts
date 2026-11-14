@@ -17,17 +17,17 @@
 import { parseFontJson } from './fontData'
 import { cleanOutlineContour } from './outlineContours'
 import { arcBaseline, bendShapesToBaseline, pathBaseline, type BendResult, type TextTemplateBounds } from './baseline'
-import helvetikerRegular from 'three/examples/fonts/helvetiker_regular.typeface.json'
-import helvetikerBold from 'three/examples/fonts/helvetiker_bold.typeface.json'
-import optimerRegular from 'three/examples/fonts/optimer_regular.typeface.json'
-import optimerBold from 'three/examples/fonts/optimer_bold.typeface.json'
-import gentilisRegular from 'three/examples/fonts/gentilis_regular.typeface.json'
-import gentilisBold from 'three/examples/fonts/gentilis_bold.typeface.json'
-import droidSansRegular from 'three/examples/fonts/droid/droid_sans_regular.typeface.json'
-import droidSansBold from 'three/examples/fonts/droid/droid_sans_bold.typeface.json'
-import droidSansMonoRegular from 'three/examples/fonts/droid/droid_sans_mono_regular.typeface.json'
-import droidSerifRegular from 'three/examples/fonts/droid/droid_serif_regular.typeface.json'
-import droidSerifBold from 'three/examples/fonts/droid/droid_serif_bold.typeface.json'
+import helvetikerRegular from 'three/examples/fonts/helvetiker_regular.typeface.json' with { type: 'json' }
+import helvetikerBold from 'three/examples/fonts/helvetiker_bold.typeface.json' with { type: 'json' }
+import optimerRegular from 'three/examples/fonts/optimer_regular.typeface.json' with { type: 'json' }
+import optimerBold from 'three/examples/fonts/optimer_bold.typeface.json' with { type: 'json' }
+import gentilisRegular from 'three/examples/fonts/gentilis_regular.typeface.json' with { type: 'json' }
+import gentilisBold from 'three/examples/fonts/gentilis_bold.typeface.json' with { type: 'json' }
+import droidSansRegular from 'three/examples/fonts/droid/droid_sans_regular.typeface.json' with { type: 'json' }
+import droidSansBold from 'three/examples/fonts/droid/droid_sans_bold.typeface.json' with { type: 'json' }
+import droidSansMonoRegular from 'three/examples/fonts/droid/droid_sans_mono_regular.typeface.json' with { type: 'json' }
+import droidSerifRegular from 'three/examples/fonts/droid/droid_serif_regular.typeface.json' with { type: 'json' }
+import droidSerifBold from 'three/examples/fonts/droid/droid_serif_bold.typeface.json' with { type: 'json' }
 import {
   getProfileBounds,
   profileVertices,
@@ -41,7 +41,6 @@ import {
   type TextLayout,
 } from '../types/project'
 import { clonePoint, cloneProfile, transformProfile, translateProfile } from '../geometry/profile'
-import { isCannedFeature, resolveCannedShapeProfiles, resolveCannedShapeShapes } from '../cannedShapes'
 
 export interface TextToolConfig {
   text: string
@@ -792,132 +791,4 @@ export function resolveTextFeatureShapes(feature: SketchFeature): GeneratedTextS
     operation: shape.operation,
     profile: transformProfile(shape.profile, mapPoint),
   }))
-}
-
-export function getFeatureGeometryProfiles(feature: SketchFeature): SketchProfile[] {
-  if (isTextFeature(feature)) {
-    return resolveTextFeatureShapes(feature).map((shape) => shape.profile)
-  }
-  if (isCannedFeature(feature)) {
-    const profiles = resolveCannedShapeProfiles(feature)
-    // An unregistered kind (a file from a later build) keeps its stored frame
-    // visible instead of vanishing; the parameters still round-trip untouched.
-    return profiles.length > 0 ? profiles : [feature.sketch.profile]
-  }
-  return [feature.sketch.profile]
-}
-
-/**
- * A feature's generated pieces, each with its resolved operation. Plain
- * features are one shape; Text and canned shapes resolve into several, and
- * their holes carry the inverse of the feature's operation (issue #861/#1112).
- */
-export interface FeatureGeometryShape {
-  profile: SketchProfile
-  operation: SketchFeature['operation']
-  name?: string
-}
-
-export function resolveFeatureGeometryShapes(feature: SketchFeature): FeatureGeometryShape[] {
-  if (isTextFeature(feature)) {
-    return resolveTextFeatureShapes(feature).map((shape) => ({
-      profile: shape.profile,
-      operation: shape.operation,
-      name: shape.name,
-    }))
-  }
-  if (isCannedFeature(feature)) {
-    return resolveCannedShapeShapes(feature).map((shape) => ({
-      profile: shape.profile,
-      operation: shape.operation,
-      name: shape.name,
-    }))
-  }
-  return [{ profile: feature.sketch.profile, operation: feature.operation }]
-}
-
-/**
- * Whether any shape this feature resolves into has `operation`. A plain feature
- * is its own single shape; a text feature resolves into glyph outlines carrying
- * its operation and counters carrying the inverse — so an add text's counters
- * are subtracts an inside route or pocket can target (issue #861). Canned
- * shapes follow the same nesting rule (issue #1112).
- */
-export function featureHasShapeWithOperation(feature: SketchFeature, operation: SketchFeature['operation']): boolean {
-  if (isTextFeature(feature)) {
-    return resolveTextFeatureShapes(feature).some((shape) => shape.operation === operation)
-  }
-  if (isCannedFeature(feature)) {
-    return resolveCannedShapeShapes(feature).some((shape) => shape.operation === operation)
-  }
-  return feature.operation === operation
-}
-
-export function featureHasClosedGeometry(feature: SketchFeature): boolean {
-  return getFeatureGeometryProfiles(feature).every((profile) => profile.closed)
-}
-
-export function getFeatureGeometryBounds(feature: SketchFeature) {
-  const profiles = getFeatureGeometryProfiles(feature)
-  if (profiles.length === 0) {
-    return getProfileBounds(feature.sketch.profile)
-  }
-  return profiles
-    .map((profile) => getProfileBounds(profile))
-    .reduce(
-      (acc, next) => ({
-        minX: Math.min(acc.minX, next.minX),
-        maxX: Math.max(acc.maxX, next.maxX),
-        minY: Math.min(acc.minY, next.minY),
-        maxY: Math.max(acc.maxY, next.maxY),
-      }),
-      { minX: Infinity, maxX: -Infinity, minY: Infinity, maxY: -Infinity },
-    )
-}
-
-export function expandFeatureGeometry(feature: SketchFeature, includeSynthetic = true): SketchFeature[] {
-  if (isTextFeature(feature)) {
-    return resolveTextFeatureShapes(feature).map((shape, index) => ({
-      ...feature,
-      id: `${feature.id}:text:${index}`,
-      name: feature.name,
-      kind: 'composite',
-      text: null,
-      sketch: {
-        ...feature.sketch,
-        profile: shape.profile,
-      },
-      operation: shape.operation,
-    }))
-  }
-
-  if (isCannedFeature(feature)) {
-    return resolveCannedShapeShapes(feature).map((shape, index) => ({
-      ...feature,
-      id: `${feature.id}:canned:${index}`,
-      name: feature.name,
-      kind: 'composite',
-      canned: null,
-      sketch: {
-        ...feature.sketch,
-        profile: shape.profile,
-      },
-      operation: shape.operation,
-    }))
-  }
-
-  // Model features (imported STL meshes) are treated as 'add' obstacles for
-  // 2.5D toolpath operations. We return a synthetic 'add' feature that uses
-  // the model's 2D silhouette profile so pockets and other operations see it
-  // as a solid obstacle they must machine around.
-  if (includeSynthetic && feature.operation === 'model') {
-    const syntheticAdd: SketchFeature = {
-      ...feature,
-      operation: 'add',
-      stl: null,
-    }
-    return [feature, syntheticAdd]
-  }
-
-  return [feature]
 }
