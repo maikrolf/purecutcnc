@@ -276,3 +276,6 @@ Generators and rest calculations resolve tools through `src/toolPolicy.ts` so mi
 - `plasmaStartPoint.ts` — resolves optional contour-local start overrides through each instance transform, preserving move/rotate/scale attachment; focused pick/persistence/units coverage lives in `components/canvas/plasmaStartPoint.test.ts` and `plasmaStartPoint.test.ts`.
 
 - `plasmaSetupIsTop` in `plasma.ts` checks the authoritative setup before the #946 dispatch transforms a Bottom project; both direct plasma generation and dispatch refuse non-Top plasma.
+
+## Generator hand-off
+- `cannedGeneratorCut.test.ts` — a gallery generator's outlines reach CAM unchanged. Expands a monogram into rows and runs pocket and inside route on them for a letter with a counter (`Bob`) and one whose name carries a descender (`Family`); every cut must stay inside the plate. This is the check the generator's own tests could not make, because it needs the resolvers.
