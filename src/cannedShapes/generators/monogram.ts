@@ -57,10 +57,10 @@ const INITIAL_SCALE = 5
 const YEAR_SCALE = 0.6
 /** Gap between stacked lines, relative to the name's cap height. */
 const LINE_GAP = 0.5
-/** Height of the band cut out of the big letter, relative to the name's cap height. */
-const BAND_SCALE = 1.2
 /** Where the name crosses the letter, as a fraction of the letter's height. */
 const BAND_Y = 0.64
+/** Clearance above and below the name, as a fraction of its cap height. */
+const BAND_MARGIN = 0.3
 
 export function normalizeMonogramCannedParams(raw: CannedShapeParams): MonogramCannedParams | null {
   const text = typeof raw.text === 'string' ? raw.text.trim() : ''
@@ -123,10 +123,11 @@ function monogramOutlines(params: MonogramCannedParams): CannedShapeOutline[] {
 
   const initialTop = -contentHeight / 2
   // The name crosses the big letter, so the letter is cut by the band the name
-  // runs through. The band sits below the letter's middle arm, so the top piece
-  // still reads as the letter rather than as its corner.
+  // runs through. The band is the name's own box plus a margin, so a descender
+  // cannot land on the lower piece. It sits below the letter's middle arm, so
+  // the top piece still reads as the letter rather than as its corner.
   const nameCentre = initialTop + initial.height * BAND_Y
-  const bandHeight = params.size * BAND_SCALE
+  const bandHeight = name.height + params.size * BAND_MARGIN
   const bandWidth = initial.width + params.size * 2
   const band = rectProfile(-bandWidth / 2, nameCentre - bandHeight / 2, bandWidth, bandHeight)
   const halves = differenceProfiles(placeRun(initial, 0, initialTop).map((outline) => outline.profile), [band])

@@ -95,6 +95,20 @@ test('splits the big letter where the name crosses it', () => {
   }
 })
 
+test('keeps a name with a descender clear of both halves', () => {
+  for (const text of ['Family', 'Bob', 'Jolly']) {
+    const shapes = resolveCannedShapeShapes({ operation: 'add', canned: { kind: MONOGRAM_CANNED_KIND, params: { ...params, text, year: 0 } } })
+    const halves = shapes.filter((shape) => shape.name?.startsWith('Letter')).map((shape) => getProfileBounds(shape.profile))
+    const nameBoxes = shapes.filter((shape) => !shape.name?.startsWith('Letter') && shape.name !== 'Plate')
+      .map((shape) => getProfileBounds(shape.profile))
+    const nameTop = Math.min(...nameBoxes.map((box) => box.minY))
+    const nameBottom = Math.max(...nameBoxes.map((box) => box.maxY))
+    for (const half of halves) {
+      assert(half.maxY <= nameTop + 1e-6 || half.minY >= nameBottom - 1e-6, `"${text}": a half overlaps the name's box`)
+    }
+  }
+})
+
 test('leaves the year out when it is 0', () => {
   const withYear = monogramProfiles(params).length
   const withoutYear = monogramProfiles({ ...params, year: 0 }).length
