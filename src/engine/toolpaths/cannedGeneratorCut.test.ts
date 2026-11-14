@@ -31,7 +31,12 @@ import { defaultTool, getProfileBounds, newProject } from '../../types/project'
 import { projectWithFeatures } from '../../test/projectFixtures'
 import { resolveCannedShapeShapes } from '../../cannedShapes'
 import { MONOGRAM_CANNED_KIND } from '../../cannedShapes/generators/monogram'
+import { BUNDLED_DEFINITIONS } from '../gcode/definitions'
+import { parseGcodeMotion } from '../gcode/gcodeMotionParser'
+import { runPostProcessor } from '../gcode/postprocessor'
 import { generateEdgeRouteToolpath } from './edge'
+import { normalizeToolForProject } from './geometry'
+import { optimizeLinearMoves } from './linearMoveOptimization'
 import { generatePocketToolpath } from './pocket'
 import type { ToolpathResult } from './types'
 
@@ -99,6 +104,24 @@ function inside(points: { x: number, y: number }[], box: { minX: number, maxX: n
   return points.every((point) => point.x > box.minX && point.x < box.maxX && point.y > box.minY && point.y < box.maxY)
 }
 
+/**
+ * Posts the operation the way the app does — optimizer first, then the real
+ * postprocessor on a bundled GRBL definition — and replays the program the way
+ * a controller reads it.
+ */
+function postAndParse(project: Project, op: Operation, toolpath: ToolpathResult) {
+  const tool = project.tools.find((candidate) => candidate.id === op.toolRef)!
+  const definition = BUNDLED_DEFINITIONS.find((candidate) => candidate.id === 'grbl')!
+  const optimized = optimizeLinearMoves(toolpath)
+  const { gcode } = runPostProcessor({
+    project,
+    definition,
+    operations: [{ operation: op, tool: normalizeToolForProject(tool, project), toolpath: optimized }],
+    options: { emitToolChanges: true, emitCoolant: false, programName: project.meta.name },
+  })
+  return { gcode, parsed: parseGcodeMotion(gcode, 'ij', ';', ''), optimized }
+}
+
 console.log('\nThe split monogram reaches CAM')
 
 for (const text of ['Bob', 'Family']) {
@@ -128,6 +151,20 @@ for (const text of ['Bob', 'Family']) {
   const routeCuts = cutPoints(route)
   check(`"${text}": inside route cuts inside the plate`, routeCuts.length > 0 && inside(routeCuts, plateBox),
     `${routeCuts.length} cut points, warnings ${JSON.stringify(route.warnings)}`)
+
+  const { gcode, parsed, optimized } = postAndParse(projectWith(rows, pocketOp), pocketOp, pocket)
+  check(`"${text}": the program parses as a controller reads it`, parsed.status === 'verified' && parsed.warnings.length === 0,
+    `${parsed.status}, warnings ${JSON.stringify(parsed.warnings)}`)
+
+  // Arc fitting turns runs of short lines into G2/G3, so counting moves would
+  // read a correct program as a loss. The distance the tool travels is what has
+  // to survive the post.
+  const span = (moves: { from: { x: number, y: number }, to: { x: number, y: number } }[]): number =>
+    moves.reduce((total, move) => total + Math.hypot(move.to.x - move.from.x, move.to.y - move.from.y), 0)
+  const postedTravel = span(parsed.moves.filter((move) => move.kind !== 'rapid'))
+  const cutTravel = span(optimized.moves.filter((move) => move.kind === 'cut'))
+  check(`"${text}": posting keeps the distance cut`, cutTravel > 0 && Math.abs(postedTravel - cutTravel) / cutTravel < 0.05,
+    `posted ${postedTravel.toFixed(1)} for ${cutTravel.toFixed(1)} cut, ${gcode.split('\n').length} lines`)
 }
 
 if (failed > 0) {
