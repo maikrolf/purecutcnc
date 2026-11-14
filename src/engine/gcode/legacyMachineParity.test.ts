@@ -28,7 +28,7 @@
 // (`pauseAfterChange` off), so the extra standalone `M0` after it is gone.
 import assert from 'node:assert/strict'
 import { mergeFormData, toFormData } from '../../components/machine/machineDefinitionForm'
-import golden from './legacyMachineParity.json'
+import golden from './legacyMachineParity.json' with { type: 'json' }
 import { BUNDLED_DEFINITIONS } from './definitions'
 import { resolveMachineKind, validateMachineDefinition } from './types'
 import { CORPUS, renderCase } from '../../../scripts/gcode-conformance/corpus'

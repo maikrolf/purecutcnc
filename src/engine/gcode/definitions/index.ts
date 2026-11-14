@@ -17,15 +17,15 @@
 import { resolveMachineKind } from '../types'
 import type { MachineDefinition, MachineKind } from '../types'
 import type { Project } from '../../../types/project'
-import generic from './generic.json'
-import grbl from './grbl.json'
-import mach3 from './mach3.json'
-import linuxcnc from './linuxcnc.json'
-import grblhal from './grblhal.json'
-import uccnc from './uccnc.json'
-import shopbot from './shopbot.json'
-import qtplasmac from './qtplasmac.json'
-import grblPlasma from './grbl-plasma.json'
+import generic from './generic.json' with { type: 'json' }
+import grbl from './grbl.json' with { type: 'json' }
+import mach3 from './mach3.json' with { type: 'json' }
+import linuxcnc from './linuxcnc.json' with { type: 'json' }
+import grblhal from './grblhal.json' with { type: 'json' }
+import uccnc from './uccnc.json' with { type: 'json' }
+import shopbot from './shopbot.json' with { type: 'json' }
+import qtplasmac from './qtplasmac.json' with { type: 'json' }
+import grblPlasma from './grbl-plasma.json' with { type: 'json' }
 
 type RotaryBlock = NonNullable<MachineDefinition['rotary']>
 

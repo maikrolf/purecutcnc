@@ -17,17 +17,17 @@
 import { parseFontJson } from './fontData'
 import { cleanOutlineContour } from './outlineContours'
 import { arcBaseline, bendShapesToBaseline, pathBaseline, type BendResult, type TextTemplateBounds } from './baseline'
-import helvetikerRegular from 'three/examples/fonts/helvetiker_regular.typeface.json'
-import helvetikerBold from 'three/examples/fonts/helvetiker_bold.typeface.json'
-import optimerRegular from 'three/examples/fonts/optimer_regular.typeface.json'
-import optimerBold from 'three/examples/fonts/optimer_bold.typeface.json'
-import gentilisRegular from 'three/examples/fonts/gentilis_regular.typeface.json'
-import gentilisBold from 'three/examples/fonts/gentilis_bold.typeface.json'
-import droidSansRegular from 'three/examples/fonts/droid/droid_sans_regular.typeface.json'
-import droidSansBold from 'three/examples/fonts/droid/droid_sans_bold.typeface.json'
-import droidSansMonoRegular from 'three/examples/fonts/droid/droid_sans_mono_regular.typeface.json'
-import droidSerifRegular from 'three/examples/fonts/droid/droid_serif_regular.typeface.json'
-import droidSerifBold from 'three/examples/fonts/droid/droid_serif_bold.typeface.json'
+import helvetikerRegular from 'three/examples/fonts/helvetiker_regular.typeface.json' with { type: 'json' }
+import helvetikerBold from 'three/examples/fonts/helvetiker_bold.typeface.json' with { type: 'json' }
+import optimerRegular from 'three/examples/fonts/optimer_regular.typeface.json' with { type: 'json' }
+import optimerBold from 'three/examples/fonts/optimer_bold.typeface.json' with { type: 'json' }
+import gentilisRegular from 'three/examples/fonts/gentilis_regular.typeface.json' with { type: 'json' }
+import gentilisBold from 'three/examples/fonts/gentilis_bold.typeface.json' with { type: 'json' }
+import droidSansRegular from 'three/examples/fonts/droid/droid_sans_regular.typeface.json' with { type: 'json' }
+import droidSansBold from 'three/examples/fonts/droid/droid_sans_bold.typeface.json' with { type: 'json' }
+import droidSansMonoRegular from 'three/examples/fonts/droid/droid_sans_mono_regular.typeface.json' with { type: 'json' }
+import droidSerifRegular from 'three/examples/fonts/droid/droid_serif_regular.typeface.json' with { type: 'json' }
+import droidSerifBold from 'three/examples/fonts/droid/droid_serif_bold.typeface.json' with { type: 'json' }
 import {
   getProfileBounds,
   profileVertices,

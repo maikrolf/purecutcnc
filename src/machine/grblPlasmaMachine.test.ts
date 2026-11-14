@@ -20,8 +20,8 @@ import { MachineDefinitionSchema, resolveMachineKind, validateMachineDefinition 
 import { exportPlasma, PLASMA_EXPORT_SCENARIOS } from '../test/plasmaExportFixtures'
 import { DEFAULT_TOUCH_OFF, mergeFormData, toFormData, validateDef } from '../components/machine/machineDefinitionForm'
 import { duplicateMachineAsCustom, parseMachineImport, serializeMachineExport } from './registry'
-import grblRaw from '../engine/gcode/definitions/grbl.json'
-import qtplasmacRaw from '../engine/gcode/definitions/qtplasmac.json'
+import grblRaw from '../engine/gcode/definitions/grbl.json' with { type: 'json' }
+import qtplasmacRaw from '../engine/gcode/definitions/qtplasmac.json' with { type: 'json' }
 
 const raw = BUNDLED_DEFINITIONS.find((definition) => definition.id === 'grbl-plasma')
 assert.ok(raw, 'Grbl plasma is discoverable in the bundled library')

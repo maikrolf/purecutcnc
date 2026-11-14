@@ -16,7 +16,7 @@
 
 import type { MachineDefinition } from '../engine/gcode/types'
 import { validateMachineDefinition } from '../engine/gcode/types'
-import genericJson from '../engine/gcode/definitions/generic.json'
+import genericJson from '../engine/gcode/definitions/generic.json' with { type: 'json' }
 import type { MachineDefinitionDraft } from './types'
 
 /**
